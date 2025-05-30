@@ -1,0 +1,12 @@
+.footer-container{
+    width: 100vw;
+    height: 80px;
+    padding:5px 20px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-title{
+    color: #fff;
+}
