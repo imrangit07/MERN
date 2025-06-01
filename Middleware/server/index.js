@@ -12,38 +12,36 @@ app.use(cors());
 
 
 app.use((req, res, next) => {
+    console.log(req.body.Name);
+    next()
 
-    const {Name} = req.body;
-    console.log(Name);
+})
+app.use((req, res, next) => {
+
+   req.body.Name = "Mohan";
+    console.log(req.body.Name);
     next()
 
 })
 app.use((req, res, next) => {
     
-    req.body = "mohan";
-    console.log(req.body);
+  req.body.Name = "Rohan";
+    console.log(req.body.Name);
     next()
 
 })
 app.use((req, res, next) => {
-    req.body = "sohan";
-    console.log(req.body);
-
-    next()
-
-})
-app.use((req, res, next) => {
-    req.body = "rohan";
-    console.log(req.body);
+   req.body.Name = "Sohan";
+    console.log(req.body.Name);
 
     next()
 
 })
 
 
-app.get("/home", (req, res, next) => {
+app.post("/home", (req, res, next) => {
+    
     const {Name} = req.body;
-    console.log(Name);
     res.send(Name)
 
 })

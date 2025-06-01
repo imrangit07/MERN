@@ -5,12 +5,14 @@ import axios from 'axios'
 
 const App = () => {
    const [name,setName]  = useState("jack");
+   
 
     const sendData = async()=>{
       console.log("click");
       
         const req = await axios.post("http://localhost:3000/home",{Name:name});
-        //  console.log(req.data);
+         console.log(req.data);
+         setName(req.data)
          
     }
 
