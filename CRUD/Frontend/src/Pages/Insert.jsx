@@ -3,6 +3,7 @@ import axios from "axios";
 import api from '../Config/Api'
 
 
+
 const Insert = () => {
   const [input, setInput] = useState({
     stuId: '',

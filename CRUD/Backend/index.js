@@ -4,9 +4,10 @@ const mongoose = require("mongoose");
 const studRoutes = require("./Routes/StudentRoutes")
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const port = 3000;
+require("dotenv").config()
+const port = process.env.PORT;
 
-mongoose.connect("mongodb://localhost:27017/studentsDB").then(()=>{
+mongoose.connect(process.env.BACKENDAPI).then(()=>{
     console.log("DB Connected Successfully!!");
 })
 
