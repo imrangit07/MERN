@@ -1,7 +1,17 @@
 const express = require('express');
 const multer = require('multer');
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv").config()
 const app = express();
-const port = 3000;
+
+const port = process.env.PORT;
+
+mongoose.connect(process.env.BACKENDAPI).then(()=>{
+    console.log("DB Connected Successfully!!");
+})
+app.use(cors());
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

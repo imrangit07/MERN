@@ -3,10 +3,11 @@ const app =express();
 const mongoose = require("mongoose");
 const userRoutes = require("./Routes/Routes")
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const cors = require("cors");
-const port = 3000;
+const port = process.env.PORT || 8000;
 
-mongoose.connect("mongodb://localhost:27017/studentsDB").then(()=>{
+mongoose.connect(process.env.DATABASEURL).then(()=>{
     console.log("DB Connected Successfully!!");
 })
 
