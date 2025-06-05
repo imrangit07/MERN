@@ -36,7 +36,7 @@ const App = () => {
   }
   useEffect(() => {
     LoadData()
-  }, [])
+  }, [allData])
   return (
     <div>
       <form >
