@@ -21,32 +21,34 @@ const Login = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.password) {
       newErrors.password = 'Password is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsLoading(true);
-      
+
       try {
-       const res = await axios.post("http://localhost:3000/user/login", formData);
+        const res = await axios.post("http://localhost:3000/user/login", formData);
         console.log('Login data:', formData);
         alert(res.data.msg);
-        navigate('/profile');
+        console.log(res.data.token);
+        localStorage.setItem("Token", res.data.token);
+        navigate('/home');
       } catch (error) {
         console.error('Login error:', error);
         setErrors({ ...errors, api: 'Invalid email or password' });
@@ -94,8 +96,8 @@ const Login = () => {
           <Link to="/forgot-password">Forgot password?</Link>
         </div>
 
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="login-button"
           disabled={isLoading}
         >
