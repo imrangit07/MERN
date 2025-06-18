@@ -5,10 +5,12 @@ const userRoutes = require('./Routes/userRoutes');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 mongoose.connect('mongodb://localhost:27017/ForTest').then(() => {
     console.log('Mongodb is connected');
 });
+
 
 app.use(cors());
 app.use(bodyParser.json());
