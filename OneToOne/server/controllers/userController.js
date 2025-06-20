@@ -21,4 +21,13 @@ const userSave = async(req,res)=>{
     }
 }
 
-module.exports ={userSave}
+const Display = async(req,res)=>{
+    
+    const UserData = await profileModel.find().populate("userId");
+    if(!UserData){
+        return res.status(404).send({msg:"No user found!"});
+    }
+    res.status(200).send(UserData)
+
+}
+module.exports ={userSave,Display}
